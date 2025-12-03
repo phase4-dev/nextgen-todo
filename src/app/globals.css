@@ -1,0 +1,255 @@
+@import "tailwindcss";
+@import "react-datepicker/dist/react-datepicker.css";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #141414;
+  --card-hover: #1a1a1a;
+  --border: #262626;
+  --primary: #073b4c;
+  --primary-hover: #0a4d63;
+  --primary-foreground: #ffffff;
+  --secondary: #ffd166;
+  --tertiary: #06d6a0;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --muted: #71717a;
+  --muted-foreground: #a1a1aa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-primary: #073b4c;
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: #ffd166;
+  --color-tertiary: #06d6a0;
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Custom scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Text selection styling */
+::selection {
+  background-color: #4dd9b8;
+  color: #073b4c;
+}
+
+::-moz-selection {
+  background-color: #4dd9b8;
+  color: #073b4c;
+}
+
+/* React DatePicker dark theme styling */
+.react-datepicker {
+  background-color: var(--card);
+  border-color: var(--border);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.react-datepicker__header {
+  background-color: var(--card);
+  border-bottom-color: var(--border);
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: var(--foreground);
+}
+
+.react-datepicker__day {
+  color: var(--foreground);
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--primary);
+  color: white;
+}
+
+.react-datepicker__day--selected:hover {
+  background-color: var(--primary-hover);
+}
+
+.react-datepicker__day--today {
+  font-weight: bold;
+  border: 1px solid var(--tertiary);
+}
+
+.react-datepicker__day--disabled {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.react-datepicker__triangle {
+  border-bottom-color: var(--card) !important;
+}
+
+.react-datepicker__triangle::before {
+  border-bottom-color: var(--border) !important;
+}
+
+.react-datepicker__input-container input {
+  background-color: var(--background);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: var(--muted);
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: var(--foreground);
+}
+
+.react-datepicker__month-container {
+  background-color: var(--card);
+}
+
+.react-datepicker__day--outside-month {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-in {
+    animation: slideIn 0.2s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .slide-in-from-bottom-2 {
+    animation: slideInFromBottom 0.2s ease-out;
+  }
+
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Overdue Aggression Mode - Angry Pulsating Animation */
+.overdue-item {
+  animation: overduePulse 1.5s ease-in-out infinite;
+  transform-origin: top center;
+  --overdue-scale: 1;
+  --overdue-glow: 0;
+}
+
+@keyframes overduePulse {
+  0%,
+  100% {
+    transform: scale(calc(var(--overdue-scale) * 1));
+  }
+  25% {
+    transform: scale(calc(var(--overdue-scale) * 1.03));
+  }
+  50% {
+    transform: scale(calc(var(--overdue-scale) * 1.06));
+  }
+  75% {
+    transform: scale(calc(var(--overdue-scale) * 1.03));
+  }
+}
+
+/* Glow effect for overdue items - more intense as days overdue increase */
+.overdue-item > div {
+  animation: overdueGlow 1.5s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes overdueGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 calc(8px + var(--overdue-glow) * 0.1) rgba(239, 68, 68, 0.4),
+      0 0 calc(15px + var(--overdue-glow) * 0.2) rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 calc(20px + var(--overdue-glow) * 0.3)
+        rgba(239, 68, 68, 0.8),
+      0 0 calc(35px + var(--overdue-glow) * 0.5) rgba(239, 68, 68, 0.5),
+      0 0 calc(50px + var(--overdue-glow) * 0.7) rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
